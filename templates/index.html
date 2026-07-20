@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>
+AI Meeting Minutes
+</title>
+
+
+<link rel="stylesheet"
+      href="{{ url_for(
+      'static',
+      filename='css/style.css'
+      ) }}">
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+<h1>
+AI Meeting Minutes
+</h1>
+
+
+
+<form
+action="/upload"
+method="POST"
+enctype="multipart/form-data">
+
+
+<input
+type="file"
+name="audioFile"
+accept="audio/*"
+required>
+
+
+<br><br>
+
+
+<button type="submit">
+Upload Audio
+</button>
+
+
+</form>
+
+
+
+
+{% if transcript %}
+
+<hr>
+
+<h2>
+Transcript
+</h2>
+
+
+<div class="result-box">
+
+<pre>
+{{ transcript }}
+</pre>
+
+</div>
+
+
+{% endif %}
+
+
+
+
+
+{% if result %}
+
+
+<hr>
+
+
+<h2>
+Korean Meeting Minutes
+</h2>
+
+
+<div class="result-box">
+
+
+{% if result.meeting_title %}
+
+<h3>
+회의 제목
+</h3>
+
+<p>
+{{ result.meeting_title }}
+</p>
+
+{% endif %}
+
+
+
+{% if result.meeting_purpose %}
+
+<h3>
+회의 목적
+</h3>
+
+<p>
+{{ result.meeting_purpose }}
+</p>
+
+{% endif %}
+
+
+
+{% if result.participants %}
+
+<h3>
+참석자
+</h3>
+
+<p>
+{{ result.participants }}
+</p>
+
+{% endif %}
+
+
+
+{% if result.discussion %}
+
+<h3>
+논의 사항
+</h3>
+
+
+<ul>
+
+{% for item in result.discussion %}
+
+<li>
+{{ item }}
+</li>
+
+{% endfor %}
+
+</ul>
+
+{% endif %}
+
+
+
+
+{% if result.decisions %}
+
+<h3>
+결정 사항
+</h3>
+
+
+<ul>
+
+{% for item in result.decisions %}
+
+<li>
+{{ item }}
+</li>
+
+{% endfor %}
+
+</ul>
+
+
+{% endif %}
+
+
+
+
+{% if result.action_items %}
+
+
+<h3>
+Action Items
+</h3>
+
+
+<table border="1">
+
+
+<tr>
+
+<th>
+담당자
+</th>
+
+<th>
+업무
+</th>
+
+<th>
+완료일
+</th>
+
+</tr>
+
+
+
+{% for item in result.action_items %}
+
+
+<tr>
+
+<td>
+{{ item.owner }}
+</td>
+
+
+<td>
+{{ item.task }}
+</td>
+
+
+<td>
+{{ item.due_date }}
+</td>
+
+
+</tr>
+
+
+{% endfor %}
+
+
+</table>
+
+
+{% endif %}
+
+
+
+</div>
+
+
+{% endif %}
+
+
+
+
+
+
+{% if english %}
+
+
+<hr>
+
+
+<h2>
+English Meeting Minutes
+</h2>
+
+
+<div class="result-box">
+
+
+<pre>
+{{ english }}
+</pre>
+
+
+</div>
+
+
+{% endif %}
+
+
+
+
+
+
+{% if word_file %}
+
+
+<hr>
+
+
+<a href="/download/word">
+
+
+<button>
+Download Word
+</button>
+
+
+</a>
+
+
+{% endif %}
+
+
+
+
+
+
+{% if pdf_file %}
+
+
+<a href="/download/pdf">
+
+
+<button>
+Download PDF
+</button>
+
+
+</a>
+
+
+{% endif %}
+
+
+
+
+
+</div>
+
+
+</body>
+
+
+</html>
