@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title>AI Meeting Minutes</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>AI Meeting Minutes System</h1>
+
+    <h3>회의 음성파일 선택</h3>
+
+  <form
+    action="/upload"
+    method="POST"
+    enctype="multipart/form-data">
+
+    <input
+        type="file"
+        name="audioFile"
+        accept=".mp3,.wav,.m4a">
+
+    <br><br>
+
+    <button type="submit">
+
+        업로드
+
+    </button>
+</form>
+
+    <hr>
+
+    <h3>회의록 생성 결과</h3>
+
+    <textarea
+        id="result"
+        rows="15"
+        cols="80"
+        placeholder="회의록이 여기에 표시됩니다."></textarea>
+
+    <br><br>
+
+    <button>Word 저장</button>
+
+    <button>PDF 저장</button>
+
+</div>
+
+<script src="{{ url_for('static',
+filename='js/main.js') }}"></script>
+
+</body>
+
+</html>

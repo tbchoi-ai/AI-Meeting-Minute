@@ -1,22 +1,43 @@
-# Python Virtual Environment
-venv/
+# ==========================
+# Python
+# ==========================
 
-# Python Cache
 __pycache__/
 *.pyc
 
-# Environment Variables
+
+# ==========================
+# Virtual Environment
+# ==========================
+
+venv/
+
+
+# ==========================
+# Environment
+# ==========================
+
 .env
 
-# Upload Files
+
+# ==========================
+# AI Meeting Files
+# ==========================
+
 uploads/
+outputs/
 
-# Output Files
-output/
 
+# ==========================
 # VS Code
+# ==========================
+
 .vscode/
 
-# OS Files
-.DS_Store
+
+# ==========================
+# OS
+# ==========================
+
 Thumbs.db
+.DS_Store
